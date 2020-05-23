@@ -28,3 +28,18 @@ IS NOT NULL	Проверяет все значения, кроме NULL
 SELECT COUNT(entree) FROM dinners WHERE entree = 'tofu';
 
 SELECT MIN(snils) FROM tourneys;
+
+
+SELECT COUNT(name), side FROM dinners GROUP BY side HAVING COUNT(name) >= 3;
+
+----------
+SELECT table1.column1, table2.column2
+FROM table1
+JOIN table2 ON table1.related_column=table2.related_column;
+
+
+SELECT table1.column1, table2.column2
+FROM table1
+JOIN table2 ON table1.related_column=table2.related_column;
+---------
+
