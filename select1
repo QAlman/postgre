@@ -1,4 +1,9 @@
 
+SELECT column_1, column_2 FROM table;
+SELECT column FROM table WHERE conditions_that_apply;
+SELECT * FROM table WHERE column = value;
+SELECT * FROM table WHERE column LIKE val%;
+
 
 
 INSERT INTO table1 (111, 222, 333)
@@ -43,3 +48,34 @@ FROM table1
 JOIN table2 ON table1.related_column=table2.related_column;
 ---------
 
+SELECT tourneys.name, tourneys.size, dinners.birthdate
+FROM tourneys
+LEFT JOIN dinners ON tourneys.name=dinners.name;
+
+
+
+SELECT tourneys.name, tourneys.size, dinners.birthdate
+FROM tourneys
+RIGHT JOIN dinners ON tourneys.name=dinners.name;
+
+SELECT tourneys.name, tourneys.size, dinners.birthdate
+FROM tourneys
+FULL JOIN dinners ON tourneys.name=dinners.name;
+
+------------
+SELECT name FROM tourneys UNION SELECT name FROM dinners;
+SELECT name FROM tourneys UNION ALL SELECT name FROM dinners;
+------------
+
+SELECT name, wins FROM tourneys
+WHERE wins > (
+SELECT wins FROM tourneys WHERE name = 'Barbara'
+);
+
+
+SELECT name, entree, side, dessert
+FROM dinners
+WHERE name = (SELECT name FROM tourneys
+WHERE wins = (SELECT MAX(wins) FROM tourneys));
+
+-------------------------
